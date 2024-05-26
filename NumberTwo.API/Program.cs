@@ -11,6 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<ReviewService>();
+builder.Services.AddScoped<BathroomService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,10 +25,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<ReviewService>();
-builder.Services.AddScoped<BathroomService>();
 
 app.UseAuthorization();
 
