@@ -1,3 +1,7 @@
+using NumberTwo.Core.Interfaces;
+using NumberTwo.Core.Services;
+using NumberTwo.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +19,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<ReviewService>();
+builder.Services.AddScoped<BathroomService>();
 
 app.UseAuthorization();
 
