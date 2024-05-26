@@ -15,7 +15,7 @@ public class Repository<T> : IBaseRepository<T> where T : class
     public async Task DeleteAsync(int id)
     {
         var entity = await _context.Set<T>().FindAsync(id);
-        _context.Set<T>().Remove(entity);
+        _context.Set<T>().Remove(entity!);
     }
 
     public async Task<IEnumerable<T>> GetAllAsync()
